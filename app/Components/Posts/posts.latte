@@ -1,0 +1,16 @@
+{control search}
+
+<div n:foreach="$posts as $post" class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{$post->category}</h5>
+        <h6 n:if="$post->region" class="card-subtitle mb-2 text-muted">{$post->region}</h6>
+        <p class="card-text">{$post->content|noescape}</p>
+        <span class="card-link">{$post->created}</span>
+        <span n:if="$post->links" class="float-end">Read more at
+            {foreach $post->links as $name => $url}
+                {var $sep = $iterator->count() -1 == $iterator->counter ? ' or' : ','}
+                <a href="{$url}" target="_blank">{$name}</a>{sep}{$sep}{/sep}
+            {/foreach}
+        </span>
+    </div>
+</div>

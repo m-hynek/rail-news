@@ -1,0 +1,9 @@
+services:
+	- App\Router\RouterFactory::createRouter
+
+	#models
+	- App\Model\PostModel
+
+	#control
+	- App\Components\Posts\PostsControlFactory
+	- App\Components\SearchForm\SearchFormFactory
