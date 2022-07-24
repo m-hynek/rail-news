@@ -19,12 +19,12 @@ class Post
      * @param array|null $profiles url indexed by profile name
      */
     public function __construct(
-        public string $category,
-        DateTime $createdDt,
-        public string $content,
+        public string  $category,
+        DateTime       $createdDt,
+        public string  $content,
         public ?string $region,
-        public ?array $links,
-        ?array $profiles
+        public ?array  $links,
+        ?array         $profiles
     )
     {
         $this->created = static::formatDateTime($createdDt);
@@ -34,11 +34,11 @@ class Post
         }
     }
 
-    private static function formatDateTime(DateTime $dateTime) : string
+    private static function formatDateTime(DateTime $dateTime): string
     {
         if ($dateTime >= DateTime::from('today')) {
             return 'Today, ' . $dateTime->format('H:i');
-        }else if ($dateTime >= DateTime::from('yesterday')) {
+        } else if ($dateTime >= DateTime::from('yesterday')) {
             return 'Yesterday, ' . $dateTime->format('H:i');
         }
 
@@ -51,7 +51,7 @@ class Post
      * @param array $profiles url indexed by profile name
      * @return string
      */
-    private static function addProfileLinks(string $content, array $profiles) : string
+    private static function addProfileLinks(string $content, array $profiles): string
     {
         foreach ($profiles as $name => $url) {
             $link = Html::el('a target="_blank"')
